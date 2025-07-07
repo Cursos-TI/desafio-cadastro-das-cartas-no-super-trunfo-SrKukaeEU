@@ -4,10 +4,12 @@ int main(){
     printf(":::::::::: JOGO SUPER TRUNFO ::::::::::\n");
     printf("- Sistema de Cadastro de cartas -\n\n");
 
+
+    int carta1, carta2;
     char estado1[2], estado2[2];
     char codigo1[3], codigo2[3];
     char nome_da_cidade1[50], nome_da_cidade2[50];
-    int populacao1, populacao2;
+    unsigned long int populacao1, populacao2;
     float area1, area2;
     float pib1, pib2;
     int qtd_pontos_turisticos1, qtd_pontos_turisticos2;
@@ -15,6 +17,7 @@ int main(){
     float PpC1;
     float DenP2;
     float PpC2;
+    float superpoder1, superpoder2;
 
     //cadastro da primeira carta
 
@@ -42,8 +45,10 @@ int main(){
     printf("Digite a quantidade de pontos turísticos: ");
     scanf("%d", &qtd_pontos_turisticos1);
 
-    DenP1 = populacao1 / area1;
-    PpC1 = pib1 / populacao1;
+    DenP1 = populacao1 / area1; //calculo  da densidade populacional
+    PpC1 = pib1 / populacao1; //calculo do pib per capta
+    superpoder1 = (float)populacao1 + area1 + pib1 + (float)qtd_pontos_turisticos1 + PpC1 + DenP1; //soma de atributos da carta 1
+
 
     printf("Carta 1 cadastrada com sucesso!!\n\n");
 
@@ -77,6 +82,7 @@ int main(){
 
     DenP2 = populacao2 / area2; //calculo  da densidade populacional
     PpC2 = pib2 / populacao2; //calculo do pib per capta
+    superpoder2 = (float)populacao2 + area2 + pib2 + (float)qtd_pontos_turisticos2 + PpC2 + DenP2; //soma de atributos da carta 2
 
     printf("Carta 2 cadastrada com sucesso!!\n\n");
 
@@ -95,8 +101,8 @@ int main(){
     printf("Área: %.2f Km²\n", area1);
     printf("PIB: R$%.2f reais\n", pib1);
     printf("Número de pontos turísticos: %d\n", qtd_pontos_turisticos1);
-    printf("Densidade populacional: %f hab/km²\n", DenP1);
-    printf("Pib per Capta: %f reais\n\n", PpC1);
+    printf("Densidade populacional: %.2f hab/km²\n", DenP1);
+    printf("Pib per Capta: %.2f reais\n\n", PpC1);
 
     printf("Carta 2\n");
 
@@ -107,11 +113,20 @@ int main(){
     printf("Área: %.2f Km²\n", area2);
     printf("PIB: R$%.2f reais\n", pib2);
     printf("Número de pontos turísticos: %d\n", qtd_pontos_turisticos2);
-    printf("Densidade populacional: %f hab/km²\n", DenP2);
-    printf("Pib per Capta: %f reais\n\n", PpC2);
+    printf("Densidade populacional: %.2f hab/km²\n", DenP2);
+    printf("Pib per Capta: %.2f reais\n\n", PpC2);
 
     printf(":::::::::: TODAS AS CARTAS FORAM CADASTRADAS COM SUCESSO!!! ::::::::::\n\n");
 
+    //comparação de cartas
+    printf("Comparação de cartas: \n\n");
+    printf("População: %d\n", populacao1 >= populacao2);
+    printf("Área: %d\n", area1 >= area2);
+    printf("PIB: %d\n", pib1 >= pib2);
+    printf("N° de Pts. turísticos: %d\n", qtd_pontos_turisticos1 >= qtd_pontos_turisticos2);
+    printf("Densidade populacional: %d\n", DenP1 < DenP2);
+    printf("PIB per Capita: %d\n", PpC1 > PpC2);
+    printf("Super Poder: %d\n", superpoder1 > superpoder2);
 
 
 
